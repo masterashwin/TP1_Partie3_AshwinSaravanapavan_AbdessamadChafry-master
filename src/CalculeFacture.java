@@ -5,6 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.io.File;
+import java.io.IOException;
 
 //Atelier 7 sorie 00 pour extraire les ligne ayant x nom abdesssamadsalut.
 
@@ -47,7 +52,7 @@ public class CalculeFacture {
 
 			}
 		} catch (Exception e) {
-			System.out.println("Le fichier ne respect pas le format demandé.");
+			System.out.println("Le fichier ne respect pas le format demandï¿½.");
 		}
 
 		return tabPlat;
@@ -75,7 +80,7 @@ public class CalculeFacture {
 
 			}
 		} catch (Exception e) {
-			System.out.println("Le fichier ne respect pas le format demandé.");
+			System.out.println("Le fichier ne respect pas le format demandï¿½.");
 		}
 
 		// System.out.println("COUCOU" + tabCommande.length);
@@ -95,7 +100,7 @@ public class CalculeFacture {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("Le fichier ne respect pas le format demandé.");
+			System.out.println("Le fichier ne respect pas le format demandï¿½.");
 		}
 		
 		return index;
@@ -242,7 +247,36 @@ public class CalculeFacture {
 		}
 
 		additionneString(tabPers);
+		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+		Calendar calobj = Calendar.getInstance();
+	    System.out.println(df.format(calobj.getTime()));
+	
 
 	}
+	
+	public static void creerFichier(String nomFichier) {
+		try {
+		      File myObj = new File(nomFichier);
+		      if (myObj.createNewFile()) {
+		        System.out.println("File created: " + myObj.getName());
+		        //this is where the code should go PrintWriter
+		      } else {
+		        System.out.println("File already exists.");
+		      }
+		    } catch (IOException e) {
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		    }
+	}
+	
+	public static String dateFichier() {
+		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+		Calendar calobj = Calendar.getInstance();
+		String date = df.format(calobj.getTime()).replace(":", "-");
+		date = "Facture_du_" + date.replace("/", "\\") + ".txt";
+		return date;
+		 
+	}
+	
 
 }

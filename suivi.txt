@@ -1,0 +1,19 @@
+1. Code pour créer un fichier et pour le taxe : Ashwwin Sarvanapavan
+
+2. Code pour les commande incorrects : Abdessamad Chafry
+
+1. Faire les tests unitaires : Ashwin Saravanapavan
+
+2. Verifier les anomalies et les corriger : Abdessamad Chafry
+
+3. Faire des test unitaires sur les nouvelles fonctionnalités : Ashwin Saravanapavan
+
+4. Commencer le dévelopement des fontionalités : Abdessamad Chafry
+
+5. Implementer des tests liés aux précédentes fonctionnalités : Ashwin Saravanapavan
+
+6. S'assurer d'avoir 75% de couverture de code : Abdessamad Chafry
+
+7. Corriger un bogue : Ashwin Saravanapavan
+
+8. Faire un ré-usinage du code : Abdessamad Chafry
