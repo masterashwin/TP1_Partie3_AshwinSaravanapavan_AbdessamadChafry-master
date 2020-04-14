@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 //Atelier 7 sorie 00 pour extraire les ligne ayant x nom abdesssamadsalut.
 
@@ -190,8 +191,9 @@ public class CalculeFacture {
 		}
 	}
 
-	public static void additionneString(String[][] tabPersn) {
+	public static String additionneString(String[][] tabPersn) {
 		String separateur = " ";
+		String facture = "";
 
 		for (int i = 0; i < tabPersn.length; i++) {
 
@@ -213,13 +215,16 @@ public class CalculeFacture {
 		}
 
 		for (int i = 0; i < tabPersn[0].length; i++) {
-			System.out.println(tabPersn[i][0] + " " + tabPersn[i][1] + "$");
+			//System.out.println(tabPersn[i][0] + " " + tabPersn[i][1] + "$");
+			facture += tabPersn[i][0] + " " + tabPersn[i][1] + "$\n";
 		}
+		return facture;
 
 	}
 
-	public static void afficher(String[][] tabPlat, String[][] tabPers, String[][] tabCom) {
-		System.out.println("Bienvenue chez Abdessamad Chafry et Ashwin Saravanapavan!\n\nFacture:");
+	public static String afficher(String[][] tabPlat, String[][] tabPers, String[][] tabCom) {
+		String facture = "Bienvenue chez Abdessamad Chafry et Ashwin Saravanapavan!\n\nFacture:\n";
+		//System.out.println("Bienvenue chez Abdessamad Chafry et Ashwin Saravanapavan!\n\nFacture:");
 		double prix = 0;
 		double quantite = 0;
 		double total = 0;
@@ -246,20 +251,28 @@ public class CalculeFacture {
 
 		}
 
-		additionneString(tabPers);
+		facture += additionneString(tabPers);
 		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 		Calendar calobj = Calendar.getInstance();
-	    System.out.println(df.format(calobj.getTime()));
+	    //System.out.println(df.format(calobj.getTime()));
+		facture += "\n\n" + df.format(calobj.getTime());
+		//System.out.println(facture);
+		return facture;
 	
 
 	}
 	
-	public static void creerFichier(String nomFichier) {
+	public static void creerFichier(String nomFichier,String[][] tabPlat, String[][] tabPers, String[][] tabCom) {
 		try {
 		      File myObj = new File(nomFichier);
 		      if (myObj.createNewFile()) {
 		        System.out.println("File created: " + myObj.getName());
-		        //this is where the code should go PrintWriter
+		        
+		        PrintWriter pw = new PrintWriter(myObj);
+		        String factureFichier = afficher(tabPlat, tabPers, tabCom);
+		        pw.println(factureFichier);
+		        pw.close();
+		        System.out.println("Done");
 		      } else {
 		        System.out.println("File already exists.");
 		      }

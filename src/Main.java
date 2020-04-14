@@ -15,8 +15,7 @@ public class Main {
 		tabPlat = CalculeFacture.creerTabPlat(tabIndex, tabSansFin);
 		tabCommande = CalculeFacture.creerTabCommande(tabIndex, tabSansFin);
 
-		CalculeFacture.afficher(tabPlat, tabPersonne, tabCommande);
-		//CalculeFacture.creerFichier(CalculeFacture.dateFichier());
+		CalculeFacture.creerFichier(CalculeFacture.dateFichier(),tabPlat,tabPersonne,tabCommande);
 		
 		
 		
