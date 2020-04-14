@@ -1,5 +1,5 @@
 import java.io.IOException;
-//hello world
+
 public class Main {
 
 	static String FICHIER = "restaurant.txt";
