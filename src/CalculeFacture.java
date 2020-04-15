@@ -12,6 +12,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
+
+
 //Atelier 7 sorie 00 pour extraire les ligne ayant x nom abdesssamadsalut.
 
 public class CalculeFacture {
@@ -109,10 +112,17 @@ public class CalculeFacture {
 
 	// ENLEVE DERNIER LIGNE
 	public static String[] remLastCase(String tmp[]) {
-		String[] out = new String[tmp.length - 1];
-		for (int i = 0; i < out.length; i++) {
-			out[i] = tmp[i];
+		String[] out;
+		if (tmp.length <= 1) {
+			out = new String[1];
+			out[0] = "Error";
+		} else {
+			out = new String[tmp.length - 1];
+			for (int i = 0; i < out.length; i++) {
+				out[i] = tmp[i];
+			}
 		}
+		
 		return out;
 	}
 
@@ -238,7 +248,8 @@ public class CalculeFacture {
 
 					quantite = Double.parseDouble(tabCom[i][2]);
 
-					total = prix * quantite;
+					total = (prix * quantite) * (1+0.05+0.0975);
+					
 
 					for (int k = 0; k < tabPers[0].length; k++) {
 						if (tabPers[k][0].equals(tabCom[i][0])) {
@@ -290,6 +301,7 @@ public class CalculeFacture {
 		return date;
 		 
 	}
+	
 	
 
 }
