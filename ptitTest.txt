@@ -1,2 +1,14 @@
-Clients :
-Roger
+Clients : 
+Ashwin
+Jathu
+Siva
+Sathees
+Plats : 
+Poutine 10
+Poisson 20
+Pizza 5
+Commandes : 
+Ashwin Poutine 2
+Jathu Pizza 4
+SatheesApple1
+Fin
