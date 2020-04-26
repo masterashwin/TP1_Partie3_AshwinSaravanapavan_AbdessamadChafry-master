@@ -39,7 +39,7 @@ public class CalculeFacture {
 	public static String[][] creerTabPlat(int[] tabIndex, String[] tabComplet) {
 		String[][] tabPlat = new String[tabIndex[2] - tabIndex[1]][tabIndex[2] - tabIndex[1]];
 
-		int compteur = 0;
+		int compteur = 0; 
 		try {
 			for (int i = tabIndex[1] + 1; i < tabIndex[2]; i++) {
 

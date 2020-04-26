@@ -2,7 +2,7 @@ import java.io.IOException;
 
 public class Main {
 
-	static String FICHIER = "ptitTest.txt";
+	static String FICHIER = "restaurant.txt";
 
 	public static void main(String[] args) throws IOException {
 		int compteLine = CalculeFacture.compteLine(FICHIER);
