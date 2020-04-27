@@ -41,7 +41,7 @@ public class Main {
 			tabCommande = CalculeFacture.creerTabCommande(tabIndex, tabSansFin);
 
 			CalculeFacture.creerFichier(CalculeFacture.dateFichier(),tabPlat,tabPersonne,tabCommande);
-			//oups
+			
 		}
 		
 		
