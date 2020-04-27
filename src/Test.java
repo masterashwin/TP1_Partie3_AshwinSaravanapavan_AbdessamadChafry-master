@@ -211,5 +211,16 @@ class Test {
 		assertEquals(reponse, resultat);
 	}
 	
+	@org.junit.jupiter.api.Test
+	void testCreerFichier() throws IOException {
+		CalculeFacture test = new CalculeFacture();
+		String nomFichier = "restaurant.txt";
+		String[][] tabPlat = {{"Poutine","Frites","Repas_Poulet"},{"10.5","2.5","15.75"}};
+		String[][] tabPers = {{"Roger","Cï¿½line","Steeve"},{"0","0","0"}};
+		String[][] tabCom = {{"Roger","Cï¿½line","Cï¿½line"},{"Poutine","Frites","Repas_Poulet"},{"1","2","1"}};
+		
+		test.creerFichier(nomFichier,tabPlat,tabPers,tabCom);
+		
+	}
 
 }

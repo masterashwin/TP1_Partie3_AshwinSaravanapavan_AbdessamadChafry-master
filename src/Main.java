@@ -2,7 +2,7 @@ import java.io.IOException;
 
 public class Main {
 
-	static String FICHIER = "restaurant.txt";
+	static String FICHIER = "ptitTest.txt";
 
 	public static void main(String[] args) throws IOException {
 		int compteLine = CalculeFacture.compteLine(FICHIER);
@@ -17,14 +17,20 @@ public class Main {
 		if (tabIndex[0] == 1234567890) {
 			System.out.println("Vous avez oublié de mettre un des trois catégories sur des lignes"
 					+ " séparer avec un deux points à la fin (Clients :, Plats :, Commandes :)");
+			CalculeFacture.creerFichier(CalculeFacture.dateFichier(),"Vous avez oublié de mettre un des trois catégories sur des lignes"
+					+ " séparer avec un deux points à la fin (Clients :, Plats :, Commandes :)");
 		}else if (tabIndex[0] == 987654321) {
+			CalculeFacture.creerFichier(CalculeFacture.dateFichier(),tabSansFin[0]);
 			System.out.println(tabSansFin[0]);
 		}else if (!tabSansFin[tabIndex[0]].contains("Clients :") || !tabSansFin[tabIndex[1]].contains("Plats :") 
 				|| !tabSansFin[tabIndex[2]].contains("Commandes :") ) {
+			CalculeFacture.creerFichier(CalculeFacture.dateFichier(),"Les sections ne sont pas en bonne ordre ou ils sont mal écrit"
+					+ "(Clients :, Plats :, Commandes :)");
 			System.out.println("Les sections ne sont pas en bonne ordre ou ils sont mal écrit"
 					+ "(Clients :, Plats :, Commandes :)");
 		}else if (tabIndex[1] - 1 < 1 || (tabIndex[2] - tabIndex[1] <= 1 || 
 				(tabSansFin.length-tabIndex[2]) <= 1)) {
+			CalculeFacture.creerFichier(CalculeFacture.dateFichier(),"Il a aucun contenu dans le fichier");
 			System.out.println("Il a aucun contenu dans le fichier");
 		}else{
 			String[][] tabPersonne = new String[tabIndex[1] - 1][2];

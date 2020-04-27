@@ -1,0 +1,17 @@
+Code pour les commande incorrects : S'assurer que les commandes son prit en charge avant la fin.
+									S'assurer que les éléments des noms des plats et du nombre de commande sont bien présent.
+									S'assurer que le format demander ‡ bien été respecter
+									
+Verifier les anomalies et les corriger : Faire différent test ‡ partir d'un fichier appart.
+										 Corriger et être sur de garder l'ancienne version ou cas ou sa ne fonctionne pas.
+										 Partager les corrections apportÈs afin de corriger d'autre anomalie.
+										 
+Commencer le développement des fonctionnalisés : S'assurer du respect au conformation du prof
+												 S'assurer que le développement est facile ‡ comprendre
+								
+S'assurer d'avoir 75% de couverture de code : Essayer de tester  toutes les méthodes
+											  Faire différent test pour tester les if et les else et les boucle for
+											  
+Faire un réusinage du code : Ajouter du commentaire
+							   Trouver des manières plus facile ‡ Écrie un code
+							   Laisser des espaces pour une meilleur lecture.

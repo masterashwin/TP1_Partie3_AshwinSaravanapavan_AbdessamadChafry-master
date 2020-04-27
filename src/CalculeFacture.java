@@ -18,7 +18,7 @@ import java.io.PrintWriter;
 
 public class CalculeFacture {
 
-	static String FICHIER = "restaurant.txt";
+	static String FICHIER = "ptitTest.txt";
 
 	// }
 	public static int[] tabIndex(int[] tab) {
@@ -251,7 +251,7 @@ public class CalculeFacture {
 
 			for (int j = 0; j < tabPlat[0].length; j++) {
 
-				if (tabCom[i][1].equals(tabPlat[j][0])) {
+				if (tabCom[i][1].equals(tabPlat[j][0] )) {
 
 					prix = Double.parseDouble(tabPlat[j][1]);
 
@@ -307,6 +307,26 @@ public class CalculeFacture {
 		date = "Facture_du_" + date.replace("/", "\\") + ".txt";
 		return date;
 
+	}
+	
+	public static void creerFichier(String nomFichier, String message) {
+		try {
+			File myObj = new File(nomFichier);
+			if (myObj.createNewFile()) {
+				System.out.println("File created: " + myObj.getName());
+
+				PrintWriter pw = new PrintWriter(myObj);
+				String factureFichier = message;
+				pw.println(factureFichier);
+				pw.close();
+				System.out.println("Done");
+			} else {
+				System.out.println("File already exists.");
+			}
+		} catch (IOException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
 	}
 
 }
