@@ -116,7 +116,7 @@ class Test {
 		CalculeFacture test = new CalculeFacture();
 		String[] input = {"Clients :",
 				"Roger",
-				"Céline",
+				"CÃ©line",
 				"Steeve"
 				,"Plats :"
 				,"Poutine 10.5"
@@ -124,8 +124,8 @@ class Test {
 				,"Repas_Poulet 15.75"
 				,"Commandes :"
 				,"Roger Poutine 1"
-				,"Céline Frites 2"
-				,"Céline Repas_Poulet 1"};
+				,"CÃ©line Frites 2"
+				,"CÃ©line Repas_Poulet 1"};
 		int[] index = {0,4,8};
 		String[][] tableau = test.creerTabPlat(index,input);
 		String[][] reponse = {{"Poutine","Frites","Repas_Poulet"},{"10.5","2.5","15.75"}};

@@ -151,23 +151,7 @@ public class CalculeFacture {
 
 	// LIRE FICHIER
 	public static String[] lireFichier(String cheminFichier) throws IOException {
-		/*
-		 * String[] tableauOriginal = new String[compteLine(FICHIER)]; int i = 0;
-		 * FileReader fluxEntreeBrute = null; BufferedReader fluxEntreeBuffered = null;
-		 * String ligneLue = null;
-		 * 
-		 * try { fluxEntreeBrute = new FileReader(cheminFichier);//
-		 * FileNotFoundException fluxEntreeBuffered = new
-		 * BufferedReader(fluxEntreeBrute);// IOException while ((ligneLue =
-		 * fluxEntreeBuffered.readLine()) != null) {// IOException tableauOriginal[i] =
-		 * ligneLue; i++; } } catch (FileNotFoundException exc) {
-		 * System.out.println("Le fichier " + cheminFichier + " est absent"); } catch
-		 * (IOException exc) { System.out.print("problème de lecture du fichier "); }
-		 * finally { try { if (fluxEntreeBrute != null) { fluxEntreeBrute.close(); } if
-		 * (fluxEntreeBuffered != null) { fluxEntreeBuffered.close(); } } catch
-		 * (IOException exc) { System.out.println("problème de fermeture du fichier ");
-		 * } } return tableauOriginal;
-		 */
+		
 		BufferedReader in = new BufferedReader(new FileReader(cheminFichier));
 		String str;
 
@@ -184,23 +168,7 @@ public class CalculeFacture {
 
 	// COMPTE LIGNE DU FICHIER
 	public static int compteLine(String filename) throws IOException {
-		/*
-		 * InputStream is = new BufferedInputStream(new FileInputStream(filename)); try
-		 * { byte[] c = new byte[1024];
-		 * 
-		 * int readChars = is.read(c); if (readChars == -1) { // bail out if nothing to
-		 * read return 0; }
-		 * 
-		 * // make it easy for the optimizer to tune this loop int count = 0; while
-		 * (readChars == 1024) { for (int i = 0; i < 1024;) { if (c[i++] == '\n') {
-		 * ++count; } } readChars = is.read(c); }
-		 * 
-		 * // count remaining characters while (readChars != -1) { //
-		 * System.out.println(readChars); for (int i = 0; i < readChars; ++i) { if (c[i]
-		 * == '\n') { ++count; } } readChars = is.read(c); }
-		 * 
-		 * return count == 0 ? 1 : count; } finally { is.close(); }
-		 */
+		
 		BufferedReader reader = new BufferedReader(new FileReader(filename));
 		int lines = 0;
 		while (reader.readLine() != null) 
@@ -242,8 +210,7 @@ public class CalculeFacture {
 
 	public static String afficher(String[][] tabPlat, String[][] tabPers, String[][] tabCom) {
 		String facture = "Bienvenue chez Abdessamad Chafry et Ashwin Saravanapavan!\n\nFacture:\n";
-		// System.out.println("Bienvenue chez Abdessamad Chafry et Ashwin
-		// Saravanapavan!\n\nFacture:");
+
 		double prix = 0;
 		double quantite = 0;
 		double total = 0;
@@ -271,11 +238,9 @@ public class CalculeFacture {
 		}
 
 		facture += additionneString(tabPers);
-		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm");
 		Calendar calobj = Calendar.getInstance();
-		// System.out.println(df.format(calobj.getTime()));
 		facture += "\n\n" + df.format(calobj.getTime());
-		// System.out.println(facture);
 		return facture;
 
 	}
@@ -324,8 +289,48 @@ public class CalculeFacture {
 				System.out.println("File already exists.");
 			}
 		} catch (IOException e) {
-			System.out.println("An error occurred.");
+			System.out.println("An error occurred."); 
 			e.printStackTrace();
+		}
+	}
+	
+	public static void verification(int[] tabIndex, String[] tabSansFin) {
+		
+		String messageErreur;
+		if (tabIndex[0] == 1234567890) {
+			messageErreur = "Vous avez oublié de mettre un des trois catégories sur des lignes"
+					+ " séparer avec un deux points à la fin (Clients :, Plats :, Commandes :)";
+			System.out.println(messageErreur);
+			CalculeFacture.creerFichier(CalculeFacture.dateFichier(),messageErreur);
+			
+		}else if (tabIndex[0] == 987654321) {
+			messageErreur = tabSansFin[0];
+			CalculeFacture.creerFichier(CalculeFacture.dateFichier(),messageErreur);
+			System.out.println(messageErreur);
+			
+		}else if (!tabSansFin[tabIndex[0]].contains("Clients :") || !tabSansFin[tabIndex[1]].contains("Plats :") 
+				|| !tabSansFin[tabIndex[2]].contains("Commandes :") ) {
+			messageErreur = "Les sections ne sont pas en bonne ordre ou ils sont mal écrit"
+					+ "(Clients :, Plats :, Commandes :)";
+			CalculeFacture.creerFichier(CalculeFacture.dateFichier(),messageErreur);
+			System.out.println(messageErreur);
+			
+		}else if (tabIndex[1] - 1 < 1 || (tabIndex[2] - tabIndex[1] <= 1 || 
+				(tabSansFin.length-tabIndex[2]) <= 1)) {
+			messageErreur = "Il a aucun contenu dans le fichier";
+			CalculeFacture.creerFichier(CalculeFacture.dateFichier(),messageErreur);
+			System.out.println(messageErreur);
+			
+		}else{
+			String[][] tabPersonne = new String[tabIndex[1] - 1][2];
+			String[][] tabPlat = new String[(tabIndex[2] - tabIndex[1])-1][2];
+			String[][] tabCommande = new String[tabSansFin.length - tabIndex[2]][3];
+			tabPersonne = CalculeFacture.creerTabPersonne(tabIndex, tabSansFin);
+			tabPlat = CalculeFacture.creerTabPlat(tabIndex, tabSansFin);
+			tabCommande = CalculeFacture.creerTabCommande(tabIndex, tabSansFin);
+
+			CalculeFacture.creerFichier(CalculeFacture.dateFichier(),tabPlat,tabPersonne,tabCommande);
+			
 		}
 	}
 
