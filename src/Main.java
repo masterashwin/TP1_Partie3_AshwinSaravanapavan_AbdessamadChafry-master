@@ -7,8 +7,8 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		int compteLine = CalculeFacture.compteLine(FICHIER);
 		System.out.println("Ligne="+compteLine);
-		String[] tabSansFin = CalculeFacture.lireFichier(FICHIER);
-		System.out.println("length ligne = " + tabSansFin.length);
+		String[] tabSansFin = CalculeFacture.lireFichier(FICHIER); 
+		System.out.println("length ligne = " + tabSansFin.length); 
 		tabSansFin = CalculeFacture.remLastCase(tabSansFin);
 		System.out.println(tabSansFin[0] + " verification du premier donner du tableau");
 		int[] tabIndex = CalculeFacture.indexSection(tabSansFin);
@@ -27,7 +27,6 @@ public class Main {
 				(tabSansFin.length-tabIndex[2]) <= 1)) {
 			System.out.println("Il a aucun contenu dans le fichier");
 		}else{
-			System.out.println("yes");
 			String[][] tabPersonne = new String[tabIndex[1] - 1][2];
 			String[][] tabPlat = new String[(tabIndex[2] - tabIndex[1])-1][2];
 			String[][] tabCommande = new String[tabSansFin.length - tabIndex[2]][3];

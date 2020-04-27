@@ -1,0 +1,15 @@
+Code pour créer ficher et taxe: 
+-TU vais faire en sorte que le nom du fichier va aller de 
+jour/mois/année heure-minute. 
+-Tu vais changer nos méthode void pour que ça soit staic et que je puisse mettre le reçu dans le fichier
+
+Test unitaire et test sur nouvelles fonctionalité
+-Tu vais faire tout les tests sauf lireFichier
+-Tu vais faire que chaque test soit dans sa propre méthode
+-Il doit avoir des test avec des input null
+-Il doit avoir au moin un test de base 
+
+Corriger un bug
+-Tout les bugs qui ont un lien avec le fichier doit être corriger
+
+

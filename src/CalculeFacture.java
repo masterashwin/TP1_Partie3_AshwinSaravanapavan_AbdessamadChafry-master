@@ -203,7 +203,7 @@ public class CalculeFacture {
 		 */
 		BufferedReader reader = new BufferedReader(new FileReader(filename));
 		int lines = 0;
-		while (reader.readLine() != null)
+		while (reader.readLine() != null) 
 			lines++;
 		reader.close();
 		return lines;
@@ -301,7 +301,7 @@ public class CalculeFacture {
 	}
 
 	public static String dateFichier() {
-		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+		DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm");
 		Calendar calobj = Calendar.getInstance();
 		String date = df.format(calobj.getTime()).replace(":", "-");
 		date = "Facture_du_" + date.replace("/", "\\") + ".txt";
